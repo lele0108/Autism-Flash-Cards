@@ -27,7 +27,6 @@ html, body {
 	box-shadow:         1px 1px 5px rgba(50, 50, 50, 0.75);
 }
 
-.cards p, h1{
+.cards p {
 	color:black !important;
-
 }

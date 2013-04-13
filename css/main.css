@@ -10,38 +10,6 @@
 	color:white;
 }
 
-#menu h3 {
-	font-family: arial;
-	font-size: 12px;
-	color: #fff;
-	margin: 0;
-	padding: 4px 0 4px 10px;
-	background: gray;
-	border-top: solid #6b6b6b 1px;
-	border-bottom: solid #3d3d3d 1px;
-	text-shadow: 0 -1px 1px #333;
-}
-
-#menu ul {
-	margin: 0;
-	padding: 0;
-	width: inherit;
-	background:gray;
-}
-#menu ul li a:link,
-#menu ul li a:visited {
-	border-bottom: solid #333 1px;
-	box-shadow: 0 1px 0 #727272;
-	color: #fff;
-	display: block;
-	font-family: arial;
-	font-size: 14px;
-	padding: 10px 0 10px 10px;
-	text-decoration: none;
-	text-shadow: 0 1px 1px #000;
-	width: 165px;
-}
-#menu ul li a:hover,
-#menu ul li a:active {
-	background-color: #716f6f;
+.ui-page {
+    min-height: 100%;
 }

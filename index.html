@@ -4,7 +4,6 @@
 	<title>Familee</title> 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="css/jquery.mobile.flatui.css" />
-	<link href='http://fonts.googleapis.com/css?family=Bilbo+Swash+Caps' rel='stylesheet' type='text/css'>
 	<link href="css/main.css" rel="stylesheet" media="screen">
 	<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.2.1/jquery.mobile-1.2.1.min.js"></script>
@@ -77,10 +76,17 @@
 		<h1>Familee</h1>
 	</div><!-- /header -->
 
-	<div data-role="content">
+	<div data-role="content" id="flip1">
 		<div class="title">
 		<center><h1>Mom</h1></center><br><br>
-		<a href="#five" data-transition="flip" data-role="button">Flip Me</a>
+		<a href="#flip2" data-transition="flip" data-role="button">Flip Me</a>
+		</div>
+	</div><!-- /content -->
+	
+	<div data-role="content" id="flip2">
+		<div class="title">
+		<center><h1>Mom</h1></center><br><br>
+		<a href="#flip1" data-transition="flip" data-role="button">Flip Me</a>
 		</div>
 	</div><!-- /content -->
 

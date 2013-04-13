@@ -26,3 +26,8 @@ html, body {
 	-moz-box-shadow:    1px 1px 5px rgba(50, 50, 50, 0.75);
 	box-shadow:         1px 1px 5px rgba(50, 50, 50, 0.75);
 }
+
+.cards p, h1{
+	color:black !important;
+
+}

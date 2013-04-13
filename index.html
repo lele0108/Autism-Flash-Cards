@@ -8,28 +8,31 @@
 	<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
 	<script src="js/custom.js"></script>
 	<script src="http://code.jquery.com/mobile/1.2.1/jquery.mobile-1.2.1.min.js"></script>
-	<script src="https://cdn.firebase.com/v0/firebase.js"></script>
-	<script type="text/javascript" src="//api.filepicker.io/v1/filepicker.js"></script>
+<script src="https://cdn.firebase.com/v0/firebase.js"></script>
+<script type="text/javascript" src="//api.filepicker.io/v1/filepicker.js"></script>
 
 <script>
-    var firebaseRef = new Firebase('https://studyroom.firebaseio.com/');
-    var img = "";
-    var newUser = firebaseRef.push();
-    firebaseRef = new Firebase ('https://studyroom.firebaseio.com/'+ newUser.name());
+	var count = 'design';
+	var img = "";
     filepicker.setKey('ASoEnOMQ8KbcdDzfxUrUQz');
 
 function add()
 {
+    var firebaseRef = new Firebase('https://studyroom.firebaseio.com/');
+    var newUser = firebaseRef.push();
+    firebaseRef = new Firebase ('https://studyroom.firebaseio.com/'+newUser.name());
+
     //console.log($("#name").val());
     console.log(img);
     if(img == "")
         img = "https://www.filepicker.io/api/file/2Ge3dw1QsmAkoVusJEXI";
-    firebaseRef.set({name:$("#name").val(), about:$("#about").val(), relation:$("#relation").val() , img:img , phone:$('#phone').val() });
+    alert("DDD" + img)
+    firebaseRef.push({name:$("#name").val(), about:$("#about").val(), relation:$("#relation").val() , img:img , phone:$('#phone').val() });
+    //alert(img);
     $("#nameSlide").html($("#name").val());
     $("#imgSlide").html('<img src="http://extrametrics.com/facedetect/?image='+img+'" width="250" height="250">');
     //firebaseRef.push({img:img});
-    //alert(firebaseRef);
-    window.location.assign("#four")
+    window.location.assign("#four");
 }
 
 function readIn()
@@ -57,10 +60,8 @@ function readIn()
 	});
 }
 
-//readIn();
-
+readIn();
 </script>
-
 <script type='text/javascript'>
 $(window).load(function(){
 $('#go').click(function() {
@@ -90,13 +91,6 @@ $('.container').live('vclick',function(event) {
 </head> 
 <body>
 
-<script type="text/javascript">
-	function linkTo(url){
-		window.location.href = "image.php?imgurl="+url;
-	}
-</script> 
-</head> 
-<body>
 <div data-role="page" id="one">
 	<div data-role="header">
 		<h1>Familee</h1>
@@ -122,8 +116,6 @@ $('.container').live('vclick',function(event) {
 	<div data-role="content">
 		<div class="title">
 		<center><h1>Upload your images</h1></center><br><br>
-			<a data-role="button"><input type="filepicker" data-transition="slide" data-role="button" data-fp-apikey="Ar2Pe2Gy6RXybNLCdyQkjz" data-fp-mimetypes="*/*" data-fp-container="modal" onchange="linkTo(event.fpfile.url)"></a>
-		<a href="#one" data-transition="slide" data-rel="back" data-role="button">Go Back</a>
 
         <input type="text" class="input-xlarge" id="name"  class="span8" placeholder="Name:">
         <input type="text" class="input-xlarge" id="phone" class="span8" placeholder="Phone Number:">
@@ -136,7 +128,7 @@ $('.container').live('vclick',function(event) {
         </select>
             
             <textarea class="field span8" id="about" rows="3" placeholder="Who is this person?"></textarea>
-            <input type="filepicker" class="btn" data-role="button"  onchange="img = event.fpfile.url; add();" data-fp-services="WEBCAM,COMPUTER"/>
+            <input type="filepicker" class="btn" data-role="button"  onchange="img = event.fpfile.url; alert(img); add();" data-fp-services="WEBCAM,COMPUTER"/>
 		    <a href="#one" data-transition="slide" data-rel="back" data-role="button">Go Back</a>
         
 		</div>
@@ -160,7 +152,6 @@ $('.container').live('vclick',function(event) {
 		<a href="#four" data-transition="slide" data-role="button">Play Now</a>
 		</div>
 	</div><!-- /content -->
-
 
 	<div data-role="footer"> 
 		<h4>Made for AT&T Hackathon. Copyright 2013</h4> 
@@ -188,7 +179,7 @@ $('.container').live('vclick',function(event) {
 				<img src="http://placehold.it/50x50">
 	    </div>
 		</div>
-		
+
 		<button type="button" id="go">Flip</button>
 		<a href="#three" data-transition="slide" data-rel="back" data-role="button">Go Back</a>
 		</div>
@@ -200,33 +191,30 @@ $('.container').live('vclick',function(event) {
 
 </div><!-- /page four-->
 
-
-<!--<div data-role="page" id="five">
-
-	<div data-role="header">
-		<h1>Familee</h1>
-	</div>
-
-	<div data-role="content">
-		<div class="title">
-		<center><div id="imgSlide"> </div></center><br><br>
-		<a href="#four" data-transition="slide" data-rel="back" data-role="button">Flip Me</a>
-		</div>
-	</div>
-
-	<div data-role="footer"> 
-		<h4>Made for AT&T Hackathon. Copyright 2013</h4> 
-	</div> 
-
-</div>!-->
-
-
-
 <div data-role="page" id="six">
 
 	<div data-role="header">
 		<h1>Familee</h1>
 	</div><!-- /header -->
+    <script>
+    var firebaseRef = new Firebase('https://studyroom.firebaseio.com/');
+    var counter = 0;
+    firebaseRef.on('child_added', function(snapshot) {
+        var user = snapshot.ref();
+        console.log(user);
+        user.on('child_added', function(othersnapshot) {
+            var data = othersnapshot.val();
+            console.log(data);
+            data.name;
+            data.phone;
+            data.img;
+            data.about;
+           $("#list").append('<div class="span2" ><a href = "#modal'+counter+'" data-toggle = "modal"><img class="person"  id="p1" src="'+data.img+'/convert?align=faces&crop=0,0,1000,1000" height="150" width="150"></a/></div><div id="modal'+counter+'" class="modal hide fade in"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h3>'+data.name+'</h3></div><div class="modal-body"><p>'+data.about+'</p></div></div>');
+           var temp  = "#p" + counter;
+            counter++;            
+        });
+    });
+    </script>
 
 	<div data-role="content">
 		<div class="title">

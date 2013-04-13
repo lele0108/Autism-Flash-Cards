@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html manifest="cache.manifest">
+    <head>
+        <title>Flashcards</title>
+        <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0" >
+
+        <meta charset="utf-8" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <link rel="apple-touch-icon-precomposed" href="icon57.png" />
+
+        <link rel="stylesheet" href="main.css" type="text/css" media="screen" charset="utf-8" />
+        <!--[if !IE]>-->
+            <link media="only screen and (max-device-width: 480px)" href="iphone.css" type="text/css" rel="stylesheet" />
+        <!--<![endif]-->
+    </head>
+    <body>
+        <div id="container">
+            <div id="main-container">
+                <div id="card-container" onclick="flip()">
+                    <div id="main"></div>
+                    <div id="main-alt" style="display:none"></div>
+                </div><!-- card-container -->
+                <div style="clear:both"></div>
+            </div><!-- main-container -->        
+            <div id="modal-container" style="display:none">
+                <span id="modal-container-close" class="button" onclick="optionsClose()"></span>
+                <div id="option-container" style="display:none">
+                    <div id="option-container-left">
+
+                        <div id="deck-container">
+                            <div id="exim-container">
+                                <div id="exim-button-container">
+                                    <div id="button-import" class="button" onclick="eximImport()">import</div>
+                                    <div id="button-export" class="button" onclick="eximExport()">export</div>
+                                </div>
+                                <div id="exim-import-container" style="display:none">
+                                    <input id="import-file" type="file" /> <div id="import-cancel" class="button" onclick="eximImportCancel()">cancel</div>
+                                </div>
+                            </div><!-- exim-container -->
+                            <div>Deck</div>
+                            <div id="deck-choices">
+                                <select id="deck-list" onchange="deckSelect(this.options[this.selectedIndex].value)">
+                                </select>
+                                
+                                <div id="deck-options">
+                                    <div class="button" onclick="deckRename()">rename</div>
+                                    <div class="button" onclick="deckDelete()">delete</div>
+                                </div>
+                            </div><!-- deck-choices -->
+                            
+                            <div id="deck-delete-conf" style="display:none">
+                                <div>Are you sure you want to delete the deck "<span id="deck-delete-name"></span>" which has <span id="deck-delete-count"></span> cards?</div>
+                                <div class="button" onclick="delDeckYes()">yes</div>
+                                <div class="button" onclick="saveDeckCancel()">no</div>
+                            </div>
+                            
+                            <div id="deck-form" style="display:none">
+                                <form action="" onsubmit="return false;">
+                                    <input id="deck-key" type="hidden" value="" />
+                                    <input id="deck-form-value" type="text" maxlength="16" value="" />
+                                    <button type="submit" style="visibility:hidden" onclick="saveDeck()">save</button>
+                                    <div id="deck-form-options">
+                                        <div class="button" onclick="saveDeck()">save</div>
+                                        <div class="button" onclick="saveDeckCancel()">cancel</div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div><!-- deck-container -->
+                    </div><!-- option-container-left -->
+                    
+                    <div id="option-container-right">
+                        <div id="option-crud">
+                            <div>Card options</div>
+                            <div id="card-options">
+                                <div id="option-add" class="button" onclick="add()">add</div>
+                                <div id="option-edit" class="button" onclick="edit()">edit</div>
+                                <div id="option-del" class="button" onclick="del()">delete</div>
+                            </div>
+                        </div>
+                        
+                        <div id="label-view">View options</div>
+                        <div id="option-buttons">
+                            <div id="option-reverse" class="switch-off" onclick="toggleOption(this)">back to front</div>
+                            <div id="option-animation" class="switch-off" onclick="toggleOption(this)">animations</div>
+                        </div>
+                           
+                    </div>
+                </div><!-- option-container -->
+                <div id="phrase-form" style="display:none">
+                    <form action="" onsubmit="return false;">
+                        <label for="phrase-1">Phrase 1:</label>
+                        <input id="phrase-1" type="text" autocorrect="off" size="22" />
+                        <br />
+                        <label for="phrase-2">Phrase 2:</label>
+                        <input id="phrase-2" type="text" autocorrect="off" size="22" />
+                        
+                        <input id="key" type="hidden" />
+                        
+                        <button id="button-save-keypress" type="submit" style="visibility:hidden" onclick="save()">save</button>
+                        <div id="button-save" class="button" onclick="save()">save</div>
+                    </form>
+                </div><!-- phrase-form -->
+                <div id="add-another" style="display:none">
+                    <button id="button-add-another" onclick="add()">Add another</button>
+                    <button onclick="optionsClose()">Done</button>
+                </div><!-- add-another -->
+                <div style="clear:both"></div>
+                
+
+                
+            </div><!-- end modal-container -->
+            
+            <div id="button-prev" class="button" title="previous" onclick="prev()"></div>
+            <div id="button-next" class="button" title="next" onclick="next()"></div>
+            
+            <div id="msg-container" style="display:none">
+                <span id="msg" onclick="msgClose()"></span>
+            </div>
+            
+            <div id="conf" style="display:none">
+                <span id="conf-msg"></span>
+                <button id="conf-yes" onclick="">Yes</button>
+                <button id="conf-no" onclick="">No</button>
+            </div><!-- end conf -->
+            
+            <div id="options-container">
+                <div id="button-shuffle" title="shuffle" class="button" onclick="shuffle()"></div>
+                <div id="options">
+                    <div id="stats">0 / 0</div>
+                    <div id="button-options" class="button" onclick="options()">options</div>
+                </div>
+            </div>
+            
+            <span id="credits"><a href="http://chrisfattarsi.com/flashcards">chris fattarsi</a></span>
+            <span id="version">0.7.2</span>
+        </div>
+        
+        <script src="js/modernizr.js" type="text/javascript" charset="utf-8"></script>
+        <script src="js/jquery.min.js"></script>
+        <script src="js/jquery-ui.min.js"></script>
+        <script src="js/BlobBuilder.min.js"></script>
+        <script src="js/FileSaver.min.js"></script>
+        <script src="card.js" type="text/javascript" charset="utf-8"></script>
+        <script src="deck.js" type="text/javascript" charset="utf-8"></script>
+        <script src="deckmgr.js" type="text/javascript" charset="utf-8"></script>
+        <script src="controller.js" type="text/javascript" charset="utf-8"></script>
+        
+        <script type="text/javascript" charset="utf-8">
+            init();
+            
+            //Capture key events
+            document.onkeydown = checkHotkey;
+            
+            var currentWidth = 0;
+            var updateLayout = function() {
+            if (window.innerWidth != currentWidth) {
+              currentWidth = window.innerWidth;
+              var orient = (currentWidth == 480) ? "" : "portrait";
+              document.body.setAttribute("orient", orient);
+              window.scrollTo(0, 1);
+            }
+          };
+
+          setInterval(updateLayout, 750);
+        </script>
+    </body>
+</html>

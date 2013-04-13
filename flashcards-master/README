@@ -1,0 +1,23 @@
+Flashcards v0.7.x
+
+A simple HTML5 app that features:
+ * Add / Edit / Delete flashcards through the frontend
+ * Uses localStorage to store all of your cards
+ * Works offline
+ * Create multiple decks to study differnet subjects
+ * Separate style for iphone or small screens
+ * Detects iphone screen orientation and updates style
+ * Randomize feature to study cards in a different order
+ * Study cards back-to-front or front-to-back
+
+Download at the Chrome store or
+at http://fattarsi.com/flashcards/
+
+Recent development changes:
+ * Ability to manage multiple decks for different subjects
+ * Reverse mode added in options menu
+ * Option to disable animations
+ * Simplified interface
+ * Look like actual cards
+ * Javascript re-written as object-oriented
+ * Style updates for mobile devices

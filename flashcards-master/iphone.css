@@ -1,0 +1,107 @@
+body[orient="portrait"] #add-another {
+    position:absolute;
+    bottom:2px;
+    left:75px;
+}
+
+#button-prev body[orient="landscape"] {
+    /*this needs to be here for the next rule to work. ??? */
+}
+
+body[orient="portrait"] #bottom-panel {
+    position:absolute;
+    bottom:3px;
+    left:4px;
+    width:291px;
+    height:70px;
+}
+
+body[orient="portrait"] #card-container {
+    cursor:pointer;
+    overflow:auto;
+    font-size:24px;
+    text-align:center;
+    color:#000;
+    font-family:'chalkduster', sans-serif;
+}
+
+body[orient="portrait"] #conf {
+    position:absolute;
+    top:30px;
+    left:10px;
+    width:285px;
+    border:0px;
+}
+
+body[orient="portrait"] #container {
+    position:relative;
+    width:295px;
+    height:290px;
+    border:1px outset;
+    background:#fff url('background.png') repeat-x;
+}
+
+body[orient="portrait"] #main-container {
+    position:absolute;
+    top:90px;
+    left:35px;
+    cursor:pointer;
+    margin:auto;
+    width:220px;
+    font-size:12px;
+    text-align:center;
+}
+
+body[orient="portrait"] #modal-container {
+    position:absolute;
+    top:5px;
+    left:5px;
+    z-index:100;
+    color:#000;
+    width:280px;
+    height:270px;
+    border:1px outset;
+    background-color:rgba(255,255,255,.98);
+}
+
+body[orient="portrait"] #msg-container {
+    position:absolute;
+    top:70px;
+    left:20px;
+    width:250px;
+    border:0px;
+}
+
+body[orient="portrait"] #option-container {
+    position:absolute;
+    top:110px;
+    left:60px;
+    background:#fff;
+}
+
+body[orient="portrait"] #option-animation {
+    position:absolute;
+    bottom:-125px;
+    left:-65px;
+}
+
+body[orient="portrait"] #option-reverse {
+    position:absolute;
+    bottom:-125px;
+    right:-65px;
+}
+
+body[orient="portrait"] #options {
+    position:absolute;
+    top:8px;
+    left:105px;
+    width:190px;
+    padding-bottom:5px;
+}
+
+body[orient="portrait"] #phrase-form {
+    position:absolute;
+    top:80px;
+    left:25px;
+    width:250px;
+}

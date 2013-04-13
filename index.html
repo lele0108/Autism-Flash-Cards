@@ -10,7 +10,15 @@
 	<script src="http://code.jquery.com/mobile/1.2.1/jquery.mobile-1.2.1.min.js"></script>
 <script src="https://cdn.firebase.com/v0/firebase.js"></script>
 <script type="text/javascript" src="//api.filepicker.io/v1/filepicker.js"></script>
-
+<script>$('#go').click(function() {
+    var page1 = $('.page1');
+    var page2 = $('.page2');
+    var toHide = page1.is(':visible') ? page1 : page2;
+    var toShow = page2.is(':visible') ? page1 : page2;
+    
+    toHide.removeClass('flip in').addClass('flip out').hide();
+    toShow.removeClass('flip out').addClass('flip in').show();
+});</script>
 <script>
     var firebaseRef = new Firebase('https://studyroom.firebaseio.com/');
     var img = "";
@@ -184,16 +192,6 @@ function readIn()
 		</div>
 	</div><!-- /content -->
 
-	<div class="flip-container" ontouchstart="this.classList.toggle('hover');">
-	<div class="flipper">
-		<div class="front">
-			<p>hi</p>
-		</div>
-		<div class="back">
-			<p>byel</p>
-		</div>
-	</div>
-	</div>
 
 	<div data-role="footer"> 
 		<h4>Made for AT&T Hackathon. Copyright 2013</h4> 
@@ -210,10 +208,24 @@ function readIn()
 	<div data-role="content">
 		<div class="title">
 		<center><h1><div id="nameSlide"></div></h1></center><br><br>
-		<div class="cards">
-			<p>This is a Sample FlashCard</p>
-			<img src="http://placehold.it/350x150">
+
+		<div class="container">
+	    <div class="page1">
+		    <div class="cards">
+				<p>This is a Sample FlashCard</p>
+				<img src="http://placehold.it/350x150">
+			</div>
+	    </div>
+	    <div class="page2">
+		    <div class="cards">
+				<p>This is a Sample FlashCard</p>
+				<img src="http://placehold.it/350x150">
+			</div>
+	    </div>
 		</div>
+		
+		<button type="button" id="go">FLIP</button>
+
 		<a href="#five" data-transition="flip" data-role="button">Flip Me</a>
 		</div>
 	</div><!-- /content -->

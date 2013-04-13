@@ -1,5 +1,7 @@
 .title {
 	background-color:gray;
-	background: url('../img/bg.png') no-repeat center center fixed;
-	padding: 0px;
+	background: url('../img/bg.png') no-repeat center center;
+	background-size: cover;
+	margin: 0px -20px 0px -20px;
+	height:300px;
 }

@@ -48,7 +48,8 @@ function readIn()
 	  $("#relationSlide").html(snapshot.val());
 	});
 	firebaseRefImage.on('value', function(snapshot) {
-	  $("#imgSlide").html(snapshot.val());
+	  img = snapshot.val();
+	  $("#imgSlide").html('<img src="http://extrametrics.com/facedetect/?image='+img+'" width="250" height="250">');
 	});
 	firebaseRefPhone.on('value', function(snapshot) {
 	  $("#phoneSlide").html(snapshot.val());

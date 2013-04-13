@@ -10,15 +10,7 @@
 	<script src="http://code.jquery.com/mobile/1.2.1/jquery.mobile-1.2.1.min.js"></script>
 <script src="https://cdn.firebase.com/v0/firebase.js"></script>
 <script type="text/javascript" src="//api.filepicker.io/v1/filepicker.js"></script>
-<script>$('#go').click(function() {
-    var page1 = $('.page1');
-    var page2 = $('.page2');
-    var toHide = page1.is(':visible') ? page1 : page2;
-    var toShow = page2.is(':visible') ? page1 : page2;
-    
-    toHide.removeClass('flip in').addClass('flip out').hide();
-    toShow.removeClass('flip out').addClass('flip in').show();
-});</script>
+
 <script>
     var firebaseRef = new Firebase('https://studyroom.firebaseio.com/');
     var img = "";
@@ -69,6 +61,21 @@ function readIn()
 
 </script>
 
+<script type='text/javascript'>//<![CDATA[ 
+$(window).load(function(){
+$('#go').click(function() {
+    var page1 = $('.page1');
+    var page2 = $('.page2');
+    var toHide = page1.is(':visible') ? page1 : page2;
+    var toShow = page2.is(':visible') ? page1 : page2;
+    
+    toHide.removeClass('flip in').addClass('flip out').hide();
+    toShow.removeClass('flip out').addClass('flip in').show();
+});
+});//]]>  
+
+</script>
+
 </head> 
 <body>
 
@@ -116,12 +123,6 @@ function readIn()
        </style>
 </head> 
 <body>
-<<<<<<< HEAD
-=======
-
-
->>>>>>> parent of 627dfc6... merge
->>>>>>> Refix to original
 <div data-role="page" id="one">
 	<div data-role="header">
 		<h1>Familee</h1>
@@ -147,14 +148,8 @@ function readIn()
 	<div data-role="content">
 		<div class="title">
 		<center><h1>Upload your images</h1></center><br><br>
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
 			<a data-role="button"><input type="filepicker" data-transition="slide" data-role="button" data-fp-apikey="Ar2Pe2Gy6RXybNLCdyQkjz" data-fp-mimetypes="*/*" data-fp-container="modal" onchange="linkTo(event.fpfile.url)"></a>
 		<a href="#one" data-transition="slide" data-rel="back" data-role="button">Go Back</a>
-=======
->>>>>>> parent of 627dfc6... merge
->>>>>>> Refix to original
 
         <input type="text" class="input-xlarge" id="name"  class="span8" placeholder="Name:">
         <input type="text" class="input-xlarge" id="phone" class="span8" placeholder="Phone Number:">
@@ -211,21 +206,16 @@ function readIn()
 
 		<div class="container">
 	    <div class="page1">
-		    <div class="cards">
 				<p>This is a Sample FlashCard</p>
 				<img src="http://placehold.it/350x150">
-			</div>
 	    </div>
 	    <div class="page2">
-		    <div class="cards">
-				<p>This is a Sample FlashCard</p>
+				<p>This is a Sample FlashCard 2</p>
 				<img src="http://placehold.it/350x150">
-			</div>
 	    </div>
 		</div>
 		
 		<button type="button" id="go">FLIP</button>
-
 		<a href="#five" data-transition="flip" data-role="button">Flip Me</a>
 		</div>
 	</div><!-- /content -->

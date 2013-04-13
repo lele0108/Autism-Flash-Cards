@@ -1,0 +1,110 @@
+<!DOCTYPE html> 
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery Swipe</title>
+
+    
+    <link rel="stylesheet" type="text/css" href="css/jquery.mobile.flatui.css" />
+    <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.2.1/jquery.mobile-1.2.1.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+
+            // Set the initial window (assuming it will always be #1
+            window.now = 1;
+
+            //get an Array of all of the pages and count
+            windowMax = $('div[data-role="page"]').length; 
+
+           $('.swipeArea').bind('swipeleft', turnPage);
+           $('.swipeArea').bind('swiperight', turnPageBack);
+        });
+
+        // Named handlers for binding page turn controls
+        function turnPage(){
+            // Check to see if we are already at the highest numbers page            
+            if (window.now < windowMax) {
+                window.now++
+                $.mobile.changePage("#device"+window.now, "slide", false, true);
+            }
+        }
+
+        function turnPageBack(){
+            // Check to see if we are already at the lowest numbered page
+            if (window.now != 1) {
+                window.now--;
+                $.mobile.changePage("#device"+window.now, "slide", true, true);
+            }
+        }
+        </script> 
+
+        <style>
+            body, div[data-role="page"], div[data-role="content"], .swipeArea {
+                height: 100%;
+                width: 100%;
+            }
+    </style>
+</head> 
+<body> 
+
+<div data-role="page" id="device1">
+    <div data-role="header">
+        <h1>Page One</h1>
+    </div>
+    <div data-role="content">   
+        Content 
+        <div class=swipeArea></div>
+    </div>
+
+    <div data-role="footer" data-position="fixed">
+        <h4>Page Footer</h4>
+    </div>
+</div>
+
+<div data-role="page" id="device2" style="height: 100%">
+    <div data-role="header">
+        <h1>Content 2</h1>
+    </div>
+    <div data-role="content" style="height: 100%">  
+        Content     
+        <div data-role="fieldcontain">
+            <label for="slider">Input slider:</label>
+            <input type="range" name="slider" id="slider" value="0" min="0" max="100"  />
+        </div>
+        <div class=swipeArea></div>
+    </div>
+    <div data-role="footer"  data-position="fixed">
+        <h4>Page Footer</h4>
+    </div>
+</div>
+
+<div data-role="page" id="device3" style="height: 100%">
+    <div data-role="header">
+        <h1>Content 3</h1>
+    </div>
+    <div data-role="content" style="height: 100%">  
+        Content     
+        <div class=swipeArea></div>
+    </div>
+    <div data-role="footer"  data-position="fixed">
+        <h4>Page Footer</h4>
+    </div>
+</div>
+
+<div data-role="page" id="device4" style="height: 100%">
+    <div data-role="header">
+        <h1>Content 4</h1>
+    </div>
+    <div data-role="content" style="height: 100%">  
+        Content     
+        <div class=swipeArea></div>
+    </div>
+    <div data-role="footer"  data-position="fixed">
+        <h4>Page Footer</h4>
+    </div>
+</div>
+
+</body>
+</html>

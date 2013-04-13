@@ -31,6 +31,34 @@ function add()
     window.location.assign("#four")
 }
 
+function readIn()
+{
+	var firebaseRefName = new Firebase('https://studyroom.firebaseio.com/name');
+	var firebaseRefAbout = new Firebase('https://studyroom.firebaseio.com/about');
+	var firebaseRefRelation = new Firebase('https://studyroom.firebaseio.com/relation');
+	var firebaseRefImage = new Firebase('https://studyroom.firebaseio.com/img');
+	var firebaseRefPhone = new Firebase('https://studyroom.firebaseio.com/phone');
+	firebaseRefName.on('value', function(snapshot) {
+	  $("#nameSlide").html(snapshot.val());
+	});
+	firebaseRefAbout.on('value', function(snapshot) {
+	  $("#aboutSlide").html(snapshot.val());
+	});
+	firebaseRefRelation.on('value', function(snapshot) {
+	  $("#relationSlide").html(snapshot.val());
+	});
+	firebaseRefImage.on('value', function(snapshot) {
+	  $("#imgSlide").html(snapshot.val());
+	});
+	firebaseRefPhone.on('value', function(snapshot) {
+	  $("#phoneSlide").html(snapshot.val());
+	});
+}
+
+readIn();
+
+
+
 </script>
 
 </head> 

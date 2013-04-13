@@ -10,78 +10,21 @@
 	<script src="http://code.jquery.com/mobile/1.2.1/jquery.mobile-1.2.1.min.js"></script>
 <script src="https://cdn.firebase.com/v0/firebase.js"></script>
 <script type="text/javascript" src="//api.filepicker.io/v1/filepicker.js"></script>
-
-<script>
-    var firebaseRef = new Firebase('https://studyroom.firebaseio.com/');
-    var img = "";
-    var newUser = firebaseRef.push();
-    firebaseRef = new Firebase ('https://studyroom.firebaseio.com/'+ newUser.name());
-    filepicker.setKey('ASoEnOMQ8KbcdDzfxUrUQz');
-
-function add()
-{
-    //console.log($("#name").val());
-    console.log(img);
-    if(img == "")
-        img = "https://www.filepicker.io/api/file/2Ge3dw1QsmAkoVusJEXI";
-    firebaseRef.set({name:$("#name").val(), about:$("#about").val(), relation:$("#relation").val() , img:img , phone:$('#phone').val() });
-    $("#nameSlide").html($("#name").val());
-    $("#imgSlide").html('<img src="http://extrametrics.com/facedetect/?image='+img+'" width="250" height="250">');
-    //firebaseRef.push({img:img});
-    window.location.assign("#four")
-}
-
-</script>
-
 </head> 
 <body>
-<<<<<<< HEAD
 <script type="text/javascript">
 	function linkTo(url){
 		window.location.href = "image.php?imgurl="+url;
 	}
 </script> 
-	<script>
-	$(document).ready(function() {
-
-            // Set the initial window (assuming it will always be #1
-            window.now = 1;
-
-            //get an Array of all of the pages and count
-            windowMax = $('div[data-role="page"]').length; 
-
-           $('.swipeArea').bind('swipeleft', turnPage);
-           $('.swipeArea').bind('swiperight', turnPageBack);
-        });
-
-        // Named handlers for binding page turn controls
-        function turnPage(){
-            // Check to see if we are already at the highest numbers page            
-            if (window.now < windowMax) {
-                window.now++
-                $.mobile.changePage("#device"+window.now, "slide", false, true);
-            }
-        }
-
-        function turnPageBack(){
-            // Check to see if we are already at the lowest numbered page
-            if (window.now != 1) {
-                window.now--;
-                $.mobile.changePage("#device"+window.now, "slide", true, true);
-            }
-        }
-       </script>
-
-       <style>
-            body, div[data-role="page"], div[data-role="content"], .swipeArea {
-                height: 100%;
-                width: 100%;
-            }
-       </style>
+	
 </head> 
 <body>
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2a6dd60b8cdeec27da378e733771ad5f8d1d4752
 <div data-role="page" id="one">
 	<div data-role="header">
 		<h1>Familee</h1>
@@ -106,6 +49,11 @@ function add()
 	<div data-role="content">
 		<div class="title">
 		<center><h1>Upload your images</h1></center><br><br>
+<<<<<<< HEAD
+=======
+			<a data-role="button"><input type="filepicker" data-transition="slide" data-role="button" data-fp-apikey="Ar2Pe2Gy6RXybNLCdyQkjz" data-fp-mimetypes="*/*" data-fp-container="modal" onchange="linkTo(event.fpfile.url)"></a>
+		<a href="#one" data-transition="slide" data-rel="back" data-role="button">Go Back</a>
+>>>>>>> 2a6dd60b8cdeec27da378e733771ad5f8d1d4752
 
         <input type="text" class="input-xlarge" id="name"  class="span8" placeholder="Name:">
         <input type="text" class="input-xlarge span8" id="phone" class="span8" placeholder="Phone Number:">

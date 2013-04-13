@@ -2,7 +2,7 @@
 	background-color:gray;
 	background: url('../img/bg.png') no-repeat center center;
 	background-size: cover;
-	margin: 0px -20px 0px -20px;
+	margin: -15px -20px 0px -20px;
 	height:300px;
 	padding:5%;
 }

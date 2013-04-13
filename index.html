@@ -4,10 +4,11 @@
 	<title>Familee</title> 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="css/jquery.mobile.flatui.css" />
-	<link href='http://fonts.googleapis.com/css?family=Bilbo+Swash+Caps' rel='stylesheet' type='text/css'>
 	<link href="css/main.css" rel="stylesheet" media="screen">
 	<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+	<script src="js/custom.js"></script>
 	<script src="http://code.jquery.com/mobile/1.2.1/jquery.mobile-1.2.1.min.js"></script>
+<<<<<<< HEAD
 	<script type="text/javascript" src="//api.filepicker.io/v1/filepicker.js"></script>
 
 </head> 
@@ -17,8 +18,49 @@
 		window.location.href = "image.php?imgurl="+url;
 	}
 </script> 
+=======
+	<script>
+	$(document).ready(function() {
 
-<div data-role="page" id="one">
+            // Set the initial window (assuming it will always be #1
+            window.now = 1;
+
+            //get an Array of all of the pages and count
+            windowMax = $('div[data-role="page"]').length; 
+
+           $('.swipeArea').bind('swipeleft', turnPage);
+           $('.swipeArea').bind('swiperight', turnPageBack);
+        });
+
+        // Named handlers for binding page turn controls
+        function turnPage(){
+            // Check to see if we are already at the highest numbers page            
+            if (window.now < windowMax) {
+                window.now++
+                $.mobile.changePage("#device"+window.now, "slide", false, true);
+            }
+        }
+
+        function turnPageBack(){
+            // Check to see if we are already at the lowest numbered page
+            if (window.now != 1) {
+                window.now--;
+                $.mobile.changePage("#device"+window.now, "slide", true, true);
+            }
+        }
+       </script>
+
+       <style>
+            body, div[data-role="page"], div[data-role="content"], .swipeArea {
+                height: 100%;
+                width: 100%;
+            }
+       </style>
+</head> 
+<body>
+>>>>>>> f5fa65a3c325a02a1d9e57e9e8edc434474390f1
+
+<div data-role="page" id="one" style="height: 100%">
 
 	<div data-role="header">
 		<h1>Familee</h1>

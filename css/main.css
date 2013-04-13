@@ -4,9 +4,13 @@
 	background-size: cover;
 	margin: -15px -20px -15px -20px;
 	padding:20%;
+	height:100%;
 }
 
 .title h1 {
 	color:white;
-	font-family: 'Bilbo Swash Caps', cursive;
+}
+
+.ui-page {
+    min-height: 100%;
 }

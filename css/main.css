@@ -13,6 +13,7 @@ html, body {
 
 .title h1 {
 	color:white;
+	text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.68);
 }
 
 .ui-page {
@@ -25,4 +26,109 @@ html, body {
 	-webkit-box-shadow: 1px 1px 5px rgba(50, 50, 50, 0.75);
 	-moz-box-shadow:    1px 1px 5px rgba(50, 50, 50, 0.75);
 	box-shadow:         1px 1px 5px rgba(50, 50, 50, 0.75);
+}
+
+.cards p {
+	color:black !important;
+}
+
+/* not important */
+.page1,.page2 {
+   color: black;
+   padding: 10px;    
+}
+/* end */
+
+.container {  
+    -webkit-perspective: 1000;
+    -moz-perspective: 1000;
+}
+
+.page1 {
+	background-color:white;
+	padding: 10px;
+	-webkit-box-shadow: 1px 1px 5px rgba(50, 50, 50, 0.75);
+	-moz-box-shadow:    1px 1px 5px rgba(50, 50, 50, 0.75);
+	box-shadow:         1px 1px 5px rgba(50, 50, 50, 0.75);
+	border-style:solid;
+	border-width:1px;
+	border-color:blue;
+	border-radius:5px;
+}
+
+.page2 {
+    
+	background-color:white;
+	padding: 10px;
+	-webkit-box-shadow: 1px 1px 5px rgba(50, 50, 50, 0.75);
+	-moz-box-shadow:    1px 1px 5px rgba(50, 50, 50, 0.75);
+	box-shadow:         1px 1px 5px rgba(50, 50, 50, 0.75);
+    display: none;
+    border-style:solid;
+	border-width:1px;
+	border-color:green;
+	border-radius:5px;
+}
+
+.flip {
+    -webkit-backface-visibility:hidden;
+    -webkit-transform:translateX(0); 
+    -moz-backface-visibility:hidden;
+    -moz-transform:translateX(0);
+}
+.flip.out {
+    -webkit-transform: rotateY(-90deg) scale(.9);
+    -webkit-animation-name: flipouttoleft;
+    -webkit-animation-duration: 175ms;
+    -moz-transform: rotateY(-90deg) scale(.9);
+    -moz-animation-name: flipouttoleft;
+    -moz-animation-duration: 175ms;
+}
+.flip.in {
+    -webkit-animation-name: flipintoright;
+    -webkit-animation-duration: 225ms;
+    -moz-animation-name: flipintoright;
+    -moz-animation-duration: 225ms;
+}
+.flip.out.reverse {
+    -webkit-transform: rotateY(90deg) scale(.9);
+    -webkit-animation-name: flipouttoright;
+    -moz-transform: rotateY(90deg) scale(.9);
+    -moz-animation-name: flipouttoright;
+}
+.flip.in.reverse {
+    -webkit-animation-name: flipintoleft;
+    -moz-animation-name: flipintoleft;
+}
+@-webkit-keyframes flipouttoleft {
+    from { -webkit-transform: rotateY(0); }
+    to { -webkit-transform: rotateY(-90deg) scale(.9); }
+}
+@-moz-keyframes flipouttoleft {
+    from { -moz-transform: rotateY(0); }
+    to { -moz-transform: rotateY(-90deg) scale(.9); }
+}
+@-webkit-keyframes flipouttoright {
+    from { -webkit-transform: rotateY(0) ; }
+    to { -webkit-transform: rotateY(90deg) scale(.9); }
+}
+@-moz-keyframes flipouttoright {
+    from { -moz-transform: rotateY(0); }
+    to { -moz-transform: rotateY(90deg) scale(.9); }
+}
+@-webkit-keyframes flipintoleft {
+    from { -webkit-transform: rotateY(-90deg) scale(.9); }
+    to { -webkit-transform: rotateY(0); }
+}
+@-moz-keyframes flipintoleft {
+    from { -moz-transform: rotateY(-90deg) scale(.9); }
+    to { -moz-transform: rotateY(0); }
+}
+@-webkit-keyframes flipintoright {
+    from { -webkit-transform: rotateY(90deg) scale(.9); }
+    to { -webkit-transform: rotateY(0); }
+}
+@-moz-keyframes flipintoright {
+    from { -moz-transform: rotateY(90deg) scale(.9); }
+    to { -moz-transform: rotateY(0); }
 }

@@ -73,7 +73,18 @@ $('#go').click(function() {
     toShow.removeClass('flip out').addClass('flip in').show();
 });
 });
+</script>
 
+<script type='text/javascript'>
+$('#go').live('tap',function(event) {
+    var page1 = $('.page1');
+    var page2 = $('.page2');
+    var toHide = page1.is(':visible') ? page1 : page2;
+    var toShow = page2.is(':visible') ? page1 : page2;
+    
+    toHide.removeClass('flip in').addClass('flip out').hide();
+    toShow.removeClass('flip out').addClass('flip in').show();
+});
 </script>
 
 </head> 
@@ -178,7 +189,7 @@ $('#go').click(function() {
 	    </div>
 		</div>
 		
-		<button type="button" id="go">FLIP</button>
+		<button type="button" id="go">Flip</button>
 		<a href="#three" data-transition="slide" data-rel="back" data-role="button">Go Back</a>
 		</div>
 	</div><!-- /content -->

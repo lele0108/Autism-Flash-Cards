@@ -28,10 +28,10 @@ function add()
     $("#nameSlide").html($("#name").val());
     $("#imgSlide").html('<img src="http://extrametrics.com/facedetect/?image='+img+'" width="250" height="250">');
     //firebaseRef.push({img:img});
-    window.location.assign("#four")
+    window.location.assign("#four");
 }
 
-function readIn()
+/*function readIn()
 {
 	var firebaseRefName = new Firebase('https://studyroom.firebaseio.com/name');
 	var firebaseRefAbout = new Firebase('https://studyroom.firebaseio.com/about');
@@ -56,7 +56,7 @@ function readIn()
 	});
 }
 
-readIn();
+readIn();*/
 
 
 
@@ -191,7 +191,7 @@ readIn();
             data.phone;
             data.img;
             data.about;
-           $("#list").append('<div class="span2" ><a href = "#modal'+counter+'" data-toggle = "modal"><img class="person"  id="p1" src="'+data.img+'/convert?align=faces&crop=0,0,1000,1000" height="150" width="150"></a/></div><div id="modal'+counter+'" class="modal hide fade in"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h3>'+data.name+'</h3></div><div class="modal-body"><p>'+bodyText+'</p></div></div>');
+           $("#list").append('<div class="span2" ><a href = "#modal'+counter+'" data-toggle = "modal"><img class="person"  id="p1" src="'+data.img+'/convert?align=faces&crop=0,0,1000,1000" height="150" width="150"></a/></div><div id="modal'+counter+'" class="modal hide fade in"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h3>'+data.name+'</h3></div><div class="modal-body"><p>'+data.about+'</p></div></div>');
            var temp  = "#p" + counter;
             counter++;            
         });

@@ -28,6 +28,7 @@ function add()
     $("#nameSlide").html($("#name").val());
     $("#imgSlide").html('<img src="http://extrametrics.com/facedetect/?image='+img+'" width="250" height="250">');
     //firebaseRef.push({img:img});
+    //alert(firebaseRef);
     window.location.assign("#four")
 }
 
@@ -56,15 +57,63 @@ function readIn()
 	});
 }
 
-readIn();
-
-
+//readIn();
 
 </script>
 
 </head> 
 <body>
 
+<script type="text/javascript">
+	function linkTo(url){
+		window.location.href = "image.php?imgurl="+url;
+	}
+</script> 
+	<script>
+	$(document).ready(function() {
+
+            // Set the initial window (assuming it will always be #1
+            window.now = 1;
+
+            //get an Array of all of the pages and count
+            windowMax = $('div[data-role="page"]').length; 
+
+           $('.swipeArea').bind('swipeleft', turnPage);
+           $('.swipeArea').bind('swiperight', turnPageBack);
+        });
+
+        // Named handlers for binding page turn controls
+        function turnPage(){
+            // Check to see if we are already at the highest numbers page            
+            if (window.now < windowMax) {
+                window.now++
+                $.mobile.changePage("#device"+window.now, "slide", false, true);
+            }
+        }
+
+        function turnPageBack(){
+            // Check to see if we are already at the lowest numbered page
+            if (window.now != 1) {
+                window.now--;
+                $.mobile.changePage("#device"+window.now, "slide", true, true);
+            }
+        }
+       </script>
+
+       <style>
+            body, div[data-role="page"], div[data-role="content"], .swipeArea {
+                height: 100%;
+                width: 100%;
+            }
+       </style>
+</head> 
+<body>
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> parent of 627dfc6... merge
+>>>>>>> Refix to original
 <div data-role="page" id="one">
 	<div data-role="header">
 		<h1>Familee</h1>
@@ -90,6 +139,14 @@ readIn();
 	<div data-role="content">
 		<div class="title">
 		<center><h1>Upload your images</h1></center><br><br>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+			<a data-role="button"><input type="filepicker" data-transition="slide" data-role="button" data-fp-apikey="Ar2Pe2Gy6RXybNLCdyQkjz" data-fp-mimetypes="*/*" data-fp-container="modal" onchange="linkTo(event.fpfile.url)"></a>
+		<a href="#one" data-transition="slide" data-rel="back" data-role="button">Go Back</a>
+=======
+>>>>>>> parent of 627dfc6... merge
+>>>>>>> Refix to original
 
         <input type="text" class="input-xlarge" id="name"  class="span8" placeholder="Name:">
         <input type="text" class="input-xlarge" id="phone" class="span8" placeholder="Phone Number:">
@@ -182,25 +239,6 @@ readIn();
 	<div data-role="header">
 		<h1>Familee</h1>
 	</div><!-- /header -->
-    <script>
-    var firebaseRef = new Firebase('https://studyroom.firebaseio.com/');
-    var counter = 0;
-    firebaseRef.on('child_added', function(snapshot) {
-        var user = snapshot.ref();
-        console.log(user);
-        user.on('child_added', function(othersnapshot) {
-            var data = othersnapshot.val();
-            console.log(data);
-            data.name;
-            data.phone;
-            data.img;
-            data.about;
-           $("#list").append('<div class="span2" ><a href = "#modal'+counter+'" data-toggle = "modal"><img class="person"  id="p1" src="'+data.img+'/convert?align=faces&crop=0,0,1000,1000" height="150" width="150"></a/></div><div id="modal'+counter+'" class="modal hide fade in"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h3>'+data.name+'</h3></div><div class="modal-body"><p>'+bodyText+'</p></div></div>');
-           var temp  = "#p" + counter;
-            counter++;            
-        });
-    });
-    </script>
 
 	<div data-role="content">
 		<div class="title">

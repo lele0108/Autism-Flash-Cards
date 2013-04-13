@@ -12,53 +12,6 @@
 
 </head> 
 <body>
-<<<<<<< HEAD
-<script type="text/javascript">
-	function linkTo(url){
-		window.location.href = "image.php?imgurl="+url;
-	}
-</script> 
-	<script>
-	$(document).ready(function() {
-
-            // Set the initial window (assuming it will always be #1
-            window.now = 1;
-
-            //get an Array of all of the pages and count
-            windowMax = $('div[data-role="page"]').length; 
-
-           $('.swipeArea').bind('swipeleft', turnPage);
-           $('.swipeArea').bind('swiperight', turnPageBack);
-        });
-
-        // Named handlers for binding page turn controls
-        function turnPage(){
-            // Check to see if we are already at the highest numbers page            
-            if (window.now < windowMax) {
-                window.now++
-                $.mobile.changePage("#device"+window.now, "slide", false, true);
-            }
-        }
-
-        function turnPageBack(){
-            // Check to see if we are already at the lowest numbered page
-            if (window.now != 1) {
-                window.now--;
-                $.mobile.changePage("#device"+window.now, "slide", true, true);
-            }
-        }
-       </script>
-
-       <style>
-            body, div[data-role="page"], div[data-role="content"], .swipeArea {
-                height: 100%;
-                width: 100%;
-            }
-       </style>
-</head> 
-<body>
-=======
->>>>>>> 53206e2b787fb7d463692b8fd66e38d373bda3f1
 
 
 <div data-role="page" id="one">

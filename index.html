@@ -7,6 +7,7 @@
 	<link href="css/main.css" rel="stylesheet" media="screen">
 	<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.2.1/jquery.mobile-1.2.1.min.js"></script>
+	<script type="text/javascript" src="//api.filepicker.io/v1/filepicker.js"></script>
 
 </head> 
 <body> 
@@ -39,6 +40,7 @@
 	<div data-role="content">
 		<div class="title">
 		<center><h1>Upload your images</h1></center><br><br>
+		<input type="filepicker" data-transition="slide" data-role="button" data-fp-apikey="Ar2Pe2Gy6RXybNLCdyQkjz" data-fp-mimetypes="*/*" data-fp-container="modal" onchange="alert(event.fpfile.url)">
 		<a href="#" data-transition="slide" data-role="button">Get Files</a>
 		<a href="#one" data-transition="slide" data-rel="back" data-role="button">Go Back</a>
 		</div>

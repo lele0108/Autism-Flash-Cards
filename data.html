@@ -47,10 +47,12 @@ $('#go').click(function() {
 $(window).load(function(){
 jQuery(document).ready(function(){
     jQuery('#hideshow').live('click', function(event) {        
-         jQuery('#rules1').toggle('show');
-         jQuery('#rules2').toggle('show');
-         jQuery('#rules3').toggle('show');
-         jQuery('#rules4').toggle('show');
+         var i = 1;
+         while (i <= counter)
+         {
+             $('#rules'+i.toString()).('hide');
+             i++;
+         }
     });
 });
 });//]]>  

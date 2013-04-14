@@ -10,7 +10,27 @@
 	<script src="http://code.jquery.com/mobile/1.2.1/jquery.mobile-1.2.1.min.js"></script>
 <script src="https://cdn.firebase.com/v0/firebase.js"></script>
 <script type="text/javascript" src="//api.filepicker.io/v1/filepicker.js"></script>
-
+<script>
+    var size = 1;
+    var firebaseRef = new Firebase('https://studyroom.firebaseio.com/');
+    var counter = 0;
+    firebaseRef.on('child_added', function(snapshot) {
+        var user = snapshot.ref();
+        console.log(user);
+        user.on('child_added', function(othersnapshot) {
+            var data = othersnapshot.val();
+            console.log(data);
+            data.name;
+            data.phone;
+            data.img;
+            data.about;
+            if (data.about == 'Mom' || data.about == 'Dad')
+                size = 2;
+           $("#data").append('<div id ="someclass"><img src=http://extrametrics.com/facedetect/?image=' + data.img + ' width = "250" height ="250"</div><div id ="someclass"><p>'+data.name+'</div><div id ="someclass"><p>'+data.about+'</div><div id ="someclass"><p>'+data.phone+'</div>');
+           console.log(data);
+        });
+    });
+</script>
 <script>
 	var count = 'design';
 	var img = "";
@@ -167,12 +187,11 @@ $('.container').live('vclick',function(event) {
 
 	<div data-role="content">
 		<div class="title">
-		<center><h1><div id="nameSlide"></div></h1></center><br><br>
+		<center><h1>Flash Cards</h1></center><br><br>
 
 		<div class="container">
 	    <div class="page1">
-				<p>This is a Sample FlashCard</p>
-				<img src="http://placehold.it/50x50">
+				<div id = "data"></div>
 	    </div>
 	    <div class="page2">
 				<p>This is a Sample FlashCard 2</p>
@@ -196,25 +215,6 @@ $('.container').live('vclick',function(event) {
 	<div data-role="header">
 		<h1>Familee</h1>
 	</div><!-- /header -->
-    <script>
-    var firebaseRef = new Firebase('https://studyroom.firebaseio.com/');
-    var counter = 0;
-    firebaseRef.on('child_added', function(snapshot) {
-        var user = snapshot.ref();
-        console.log(user);
-        user.on('child_added', function(othersnapshot) {
-            var data = othersnapshot.val();
-            console.log(data);
-            data.name;
-            data.phone;
-            data.img;
-            data.about;
-           $("#list").append('<div class="span2" ><a href = "#modal'+counter+'" data-toggle = "modal"><img class="person"  id="p1" src="'+data.img+'/convert?align=faces&crop=0,0,1000,1000" height="150" width="150"></a/></div><div id="modal'+counter+'" class="modal hide fade in"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h3>'+data.name+'</h3></div><div class="modal-body"><p>'+data.about+'</p></div></div>');
-           var temp  = "#p" + counter;
-            counter++;            
-        });
-    });
-    </script>
 
 	<div data-role="content">
 		<div class="title">

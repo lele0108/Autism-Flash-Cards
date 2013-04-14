@@ -1,34 +1,76 @@
 <html>
 <head>
-        <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+<link href="css/main.css" rel="stylesheet" media="screen">
+<script type='text/javascript'>
+$(window).load(function(){
+$('#go').click(function() {
+    var page1 = $('.page1');
+    var page2 = $('.page2');
+    var toHide = page1.is(':visible') ? page1 : page2;
+    var toShow = page2.is(':visible') ? page1 : page2;
+    
+    toHide.removeClass('flip in').addClass('flip out').hide();
+    toShow.removeClass('flip out').addClass('flip in').show();
+});
+});
+</script>
 
 <script src="https://cdn.firebase.com/v0/firebase.js"></script>
 <script>
 
+
+    var size = 1;
+    var classname = "";
+    var counter = 0;
     var firebaseRef = new Firebase('https://studyroom.firebaseio.com/');
     var counter = 0;
     firebaseRef.on('child_added', function(snapshot) {
         var user = snapshot.ref();
         console.log(user);
         user.on('child_added', function(othersnapshot) {
+            counter++;
+            classname = 'rules' + counter.toString();
             var data = othersnapshot.val();
             console.log(data);
             data.name;
             data.phone;
             data.img;
             data.about;
-           $("#data").append('<div id ="someclass"><img src=http://extrametrics.com/facedetect/?image=' + data.img + ' width = "250" height ="250"</div><div id ="someclass"><p>'+data.name+'</div><div id ="someclass"><p>'+data.about+'</div><div id ="someclass"><p>'+data.phone+'</div>');
+          $("#data").append('<div class=' + classname + ' id="#rolesss"><div class="container"><div class="page1"><div id ="someclass"><img src=http://extrametrics.com/facedetect/?image=' + data.img + ' width = "250" height ="250"></div></div><div class="page2"><div id ="someclass"><p>'+data.name+'</div><div id ="someclass"><p>'+data.about+'</div><div id ="someclass"><p>'+data.phone+'</div></div></div><br><br></div>');
            console.log(data);
         });
     });
 </script>
+
+<script type='text/javascript'>
+$(window).load(function(){
+$('#yolo').click(function() {
+    var classList = document.getElementById('rolesss').className.split(/\s+/);
+    for (var i = 0; i < classList.length; i++) {
+       if (classList[i] === 'rules'+i.toString()) {
+         
+       }
+    }
+    /*var slidenumber = 0;
+    var pages = [];
+    for (int i = 0; i < counter; i++) {
+        pages[i] = $('.rules' + i.toString());
+        pages[i].hide();
+    }*/
+
+});
+});
+</script>
+
 </head>
 <body>
 <div id = "data"></div>
+<button type="button" id="go">Flip</button>
+<button type="button" id="yolo">Hide First</button>
 
 
 
 </body>
 </html>
-
 <!--<div class = "card" style="visbility:hidden" onClick()-->

@@ -10,27 +10,33 @@
 	<script src="http://code.jquery.com/mobile/1.2.1/jquery.mobile-1.2.1.min.js"></script>
 <script src="https://cdn.firebase.com/v0/firebase.js"></script>
 <script type="text/javascript" src="//api.filepicker.io/v1/filepicker.js"></script>
+
 <script>
+
+
     var size = 1;
+    var classname = "";
+    var counter = 0;
     var firebaseRef = new Firebase('https://studyroom.firebaseio.com/');
     var counter = 0;
     firebaseRef.on('child_added', function(snapshot) {
         var user = snapshot.ref();
         console.log(user);
         user.on('child_added', function(othersnapshot) {
+            counter++;
+            classname = 'rules' + counter.toString();
             var data = othersnapshot.val();
             console.log(data);
             data.name;
             data.phone;
             data.img;
             data.about;
-            if (data.about == 'Mom' || data.about == 'Dad')
-                size = 2;
-           $("#data").append('<div id ="someclass"><img src=http://extrametrics.com/facedetect/?image=' + data.img + ' width = "250" height ="250"</div><div id ="someclass"><p>'+data.name+'</div><div id ="someclass"><p>'+data.about+'</div><div id ="someclass"><p>'+data.phone+'</div>');
+          $("#data").append('<div id=' + classname + ' id="#rolesss"><div class="container"><div class="page1"><div id ="someclass"><img src=http://extrametrics.com/facedetect/?image=' + data.img + ' width = "250" height ="250"></div></div><div class="page2"><div id ="someclass"><h2>'+data.name+'</h2></div><div id ="someclass"><p>'+data.about+'</div><div id ="someclass"><p>'+data.phone+'</p></div></div></div><br><br></div>');
            console.log(data);
         });
     });
 </script>
+
 <script>
 	var count = 'design';
 	var img = "";
@@ -46,7 +52,6 @@ function add()
     console.log(img);
     if(img == "")
         img = "https://www.filepicker.io/api/file/2Ge3dw1QsmAkoVusJEXI";
-    alert("DDD" + img)
     firebaseRef.push({name:$("#name").val(), about:$("#about").val(), relation:$("#relation").val() , img:img , phone:$('#phone').val() });
     //alert(img);
     $("#nameSlide").html($("#name").val());
@@ -107,6 +112,37 @@ $('.container').live('vclick',function(event) {
     toShow.removeClass('flip out').addClass('flip in').show();
 });
 </script>
+<script type='text/javascript'>//<![CDATA[ 
+$(window).load(function(){
+jQuery(document).ready(function(){
+    jQuery('#hideshow').live('click', function(event) {        
+         var i = 1;
+         while (i <= counter)
+         {
+             jQuery('#rules'+i.toString()).toggle('hide');
+             i++;
+         }
+         jQuery('#rules1').toggle('show');
+    });
+});
+});//]]>  
+</script>
+
+<script type='text/javascript'>//<![CDATA[
+
+$(window).load(function(){
+jQuery(document).ready(function(){
+    var z = 2; 
+    var x = 1;
+    jQuery('#hideshow1').live('click', function(event) { 
+         jQuery('#rules' + z).toggle('show');
+         jQuery('#rules' + x).toggle('hide');
+         z++;
+         x++;
+    });
+});
+});//]]>  
+</script>
 
 </head> 
 <body>
@@ -148,7 +184,7 @@ $('.container').live('vclick',function(event) {
         </select>
             
             <textarea class="field span8" id="about" rows="3" placeholder="Who is this person?"></textarea>
-            <input type="filepicker" class="btn" data-role="button"  onchange="img = event.fpfile.url; alert(img); add();" data-fp-services="WEBCAM,COMPUTER"/>
+            <input type="filepicker" class="btn" data-role="button"  onchange="img = event.fpfile.url; add();" data-fp-services="WEBCAM,COMPUTER"/>
 		    <a href="#one" data-transition="slide" data-rel="back" data-role="button">Go Back</a>
         
 		</div>
@@ -189,18 +225,11 @@ $('.container').live('vclick',function(event) {
 		<div class="title">
 		<center><h1>Flash Cards</h1></center><br><br>
 
-		<div class="container">
-	    <div class="page1">
-				<div id = "data"></div>
-	    </div>
-	    <div class="page2">
-				<p>This is a Sample FlashCard 2</p>
-				<img src="http://placehold.it/50x50">
-	    </div>
-		</div>
-
-		<button type="button" id="go">Flip</button>
+		<div id = "data"></div>
 		<a href="#three" data-transition="slide" data-rel="back" data-role="button">Go Back</a>
+
+		<input type='button' id='hideshow' value='Show One'>
+		<input type='button' id='hideshow1' value='Next'>
 		</div>
 	</div><!-- /content -->
 

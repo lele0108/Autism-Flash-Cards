@@ -37,37 +37,30 @@ $('#go').click(function() {
             data.phone;
             data.img;
             data.about;
-          $("#data").append('<div class=' + classname + ' id="#rolesss"><div class="container"><div class="page1"><div id ="someclass"><img src=http://extrametrics.com/facedetect/?image=' + data.img + ' width = "250" height ="250"></div></div><div class="page2"><div id ="someclass"><p>'+data.name+'</div><div id ="someclass"><p>'+data.about+'</div><div id ="someclass"><p>'+data.phone+'</div></div></div><br><br></div>');
+          $("#data").append('<div id=' + classname + ' id="#rolesss"><div class="container"><div class="page1"><div id ="someclass"><img src=http://extrametrics.com/facedetect/?image=' + data.img + ' width = "250" height ="250"></div></div><div class="page2"><div id ="someclass"><p>'+data.name+'</div><div id ="someclass"><p>'+data.about+'</div><div id ="someclass"><p>'+data.phone+'</p><p>'+classname+'</p></div></div></div><br><br></div>');
            console.log(data);
         });
     });
 </script>
 
-<script type='text/javascript'>
+<script type='text/javascript'>//<![CDATA[ 
 $(window).load(function(){
-$('#yolo').click(function() {
-    var classList = document.getElementById('rolesss').className.split(/\s+/);
-    for (var i = 0; i < classList.length; i++) {
-       if (classList[i] === 'rules'+i.toString()) {
-         
-       }
-    }
-    /*var slidenumber = 0;
-    var pages = [];
-    for (int i = 0; i < counter; i++) {
-        pages[i] = $('.rules' + i.toString());
-        pages[i].hide();
-    }*/
-
+jQuery(document).ready(function(){
+    jQuery('#hideshow').live('click', function(event) {        
+         jQuery('#rules1').toggle('show');
+         jQuery('#rules2').toggle('show');
+         jQuery('#rules3').toggle('show');
+         jQuery('#rules4').toggle('show');
+    });
 });
-});
+});//]]>  
 </script>
 
 </head>
 <body>
 <div id = "data"></div>
 <button type="button" id="go">Flip</button>
-<button type="button" id="yolo">Hide First</button>
+<input type='button' id='hideshow' value='hide/show'>
 
 
 
